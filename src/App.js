@@ -1,15 +1,15 @@
 import './App.css';
-import Toast from './component/Toast';
+import ToastContainer from './component/ToastContainer';
+import { useToastContext } from './context/toast.context';
 
 function App() {
+  const { addErrorToast, addSuccessToast, addInfoToast, } = useToastContext()
   return (
     <div className="App">
-      <div style={{display:'flex', flexDirection: "column", width: "50%", justifyContent: 'center'}}>
-      <Toast type={'success'} message={"Data resolved"} />
-      <Toast type={'error'} message={"Oops something wet wrong"} />
-      <Toast type={'info'} message={"Hello here"} />
-      </div>
-
+      <button onClick={addSuccessToast}>Success</button>
+      <button onClick={addErrorToast}>Error</button>
+      <button onClick={addInfoToast}>Info</button>
+      <ToastContainer />
     </div>
   );
 }

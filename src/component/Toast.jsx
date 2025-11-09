@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const toastType = {
   success: {
@@ -16,6 +16,16 @@ const toastType = {
 };
 
 const Toast = ({ message, type }) => {
+  const [visiblity, setVisibility] = useState('block');
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setVisibility('none');
+    }, 1500);
+
+    return () => clearTimeout(timeOut);
+  }, []);
+
   return (
     <div
       style={{
@@ -23,7 +33,8 @@ const Toast = ({ message, type }) => {
         color: toastType[type].color,
         padding: '16px',
         marginTop: '8px',
-        borderRadius: '16px'
+        borderRadius: '16px',
+        display: visiblity,
       }}
     >
       <p>{message}</p>
