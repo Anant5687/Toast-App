@@ -3,7 +3,6 @@ import React, { useMemo, useState } from 'react';
 const Search = () => {
   const [value, setValue] = useState('');
 
-  
   const doctorsList = useMemo(() => {
     if (value) {
       return [
