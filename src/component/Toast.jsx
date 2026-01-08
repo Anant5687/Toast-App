@@ -20,7 +20,9 @@ const Toast = ({ message, type }) => {
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
+
       setVisibility('none');
+      
     }, 1500);
 
     return () => clearTimeout(timeOut);
